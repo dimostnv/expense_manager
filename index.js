@@ -12,8 +12,9 @@ const dbConnect = require('./config/db');
 attachProps(app);
 addRoutes(app);
 
-dbConnect().then(() => {
-  app.listen(port, () => {
-    console.log(`Server is listening on port ${port}!`);
+dbConnect()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server is listening on port ${port}!`);
+    });
   });
-});

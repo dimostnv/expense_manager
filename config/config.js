@@ -5,7 +5,7 @@ const endpoint = {
     port: 5000,
     databaseURL: 'mongodb://localhost:27017/expenseManager'
   },
-  'deployment': {}
+  'production': {}
 };
 
 module.exports = endpoint[env];
