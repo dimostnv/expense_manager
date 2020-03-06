@@ -8,7 +8,7 @@ router.get('/all', expense.getAll);
 router.get('/get/:id', expense.getOne);
 
 router.post('/add', expense.create);
-router.post('/update/:id', expense.update);
+router.put('/update/:id', expense.update);
 router.post('/delete/:id', expense.remove);
 
 module.exports = router;
