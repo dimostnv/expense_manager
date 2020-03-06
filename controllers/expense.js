@@ -28,7 +28,7 @@ const expense = {
 
     const data = {title, description, category, amount} = req.body;
 
-    expenseModel.findByIdAndUpdate(targetId, data)
+    expenseModel.findByIdAndUpdate(targetId, {$set: {...data}})
       .then(() => {
         res.send('Expense updated!');
       }).catch(next);
