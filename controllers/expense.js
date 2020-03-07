@@ -3,7 +3,7 @@ const {expenseModel} = require('../models/index');
 const expense = {
   getAll: function (req, res, next) {
 
-    expenseModel.find({})
+    expenseModel.find({}).sort({created:-1}).limit(10)
       .then((expenses) => {
         console.log(expenses);
         res.send(expenses);
