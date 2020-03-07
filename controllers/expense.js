@@ -2,8 +2,10 @@ const {expenseModel} = require('../models/index');
 
 const expense = {
   getAll: function (req, res, next) {
+
     expenseModel.find({})
       .then((expenses) => {
+        console.log(expenses);
         res.send(expenses);
       }).catch(next);
   },
@@ -13,6 +15,15 @@ const expense = {
     expenseModel.findById(targetId)
       .then((expense) => {
         res.send(expense);
+      }).catch(next);
+  },
+  getByYear: function (req, res, next){
+    const year = req.params.year;
+
+    expenseModel
+      .find({'created': {'$gt': new Date(year, 0, 1), '$lt': new Date(year, 11, 31)}})
+      .then((data) => {
+        res.send(data);
       }).catch(next);
   },
   create: function (req, res, next) {
