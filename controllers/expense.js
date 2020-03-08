@@ -17,7 +17,7 @@ const expense = {
         res.send(expense);
       }).catch(next);
   },
-  getByYear: function (req, res, next){
+  /*getByYear: function (req, res, next){
     const year = req.params.year;
 
     expenseModel
@@ -25,7 +25,7 @@ const expense = {
       .then((data) => {
         res.send(data);
       }).catch(next);
-  },
+  },*/
   create: function (req, res, next) {
     const data = {title, description, category, amount} = req.body;
 
