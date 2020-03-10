@@ -3,6 +3,7 @@ const router = express.Router();
 
 const usersRouter = require('./users');
 const expensesRouter = require('./expenses');
+const categoriesRouter = require('./expense-categories');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -12,5 +13,6 @@ router.get('/', function (req, res, next) {
 module.exports = {
   router,
   usersRouter,
-  expensesRouter
+  expensesRouter,
+  categoriesRouter
 };
