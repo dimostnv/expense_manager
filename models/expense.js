@@ -19,7 +19,11 @@ const expenseModelSchema = mongoose.Schema({
   created: {
     type: Date,
     default: Date.now
-  }
+  },
+  /*owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'userModel'
+  }*/
 });
 
 module.exports = mongoose.model('expenseModel', expenseModelSchema);

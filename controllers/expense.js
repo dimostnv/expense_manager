@@ -5,7 +5,6 @@ const expense = {
 
     expenseModel.find({}).sort({created:-1}).limit(10)
       .then((expenses) => {
-        console.log(expenses);
         res.send(expenses);
       }).catch(next);
   },
@@ -17,17 +16,8 @@ const expense = {
         res.send(expense);
       }).catch(next);
   },
-  /*getByYear: function (req, res, next){
-    const year = req.params.year;
-
-    expenseModel
-      .find({'created': {'$gt': new Date(year, 0, 1), '$lt': new Date(year, 11, 31)}})
-      .then((data) => {
-        res.send(data);
-      }).catch(next);
-  },*/
   create: function (req, res, next) {
-    const data = {title, description, category, amount} = req.body;
+    const data = {title, description, category, amount, owner} = req.body;
 
     expenseModel.create(data)
       .then(() => {
