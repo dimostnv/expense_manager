@@ -20,10 +20,10 @@ const expenseModelSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  /*owner: {
+  owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'userModel'
-  }*/
+  }
 });
 
 module.exports = mongoose.model('expenseModel', expenseModelSchema);

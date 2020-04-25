@@ -14,11 +14,11 @@ const userModelSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
-  }/*,
-  expenses: {
+  },
+  expenses: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'expenseModel'
-  }*/
+  }]
 
 });
 
