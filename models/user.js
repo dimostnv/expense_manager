@@ -18,6 +18,10 @@ const userModelSchema = mongoose.Schema({
   expenses: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'expenseModel'
+  }],
+  expenseCategories: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'expenseCategory'
   }]
 
 });

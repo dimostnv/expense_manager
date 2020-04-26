@@ -1,9 +1,9 @@
-const {expenseModel} = require('../models/index');
+const {expenseModel, userModel} = require('../models/index');
 
 const expense = {
   getAll: function (req, res, next) {
 
-    expenseModel.find({}).sort({created:-1}).limit(10)
+    expenseModel.find({}).sort({created: -1}).limit(10)
       .then((expenses) => {
         res.send(expenses);
       }).catch(next);
@@ -17,12 +17,21 @@ const expense = {
       }).catch(next);
   },
   create: function (req, res, next) {
-    const data = {title, description, category, amount, owner} = req.body;
+    const data = {title, description, category, amount} = req.body;
+    const username = req.body.user;
 
-    expenseModel.create(data)
-      .then(() => {
-        res.send('Expense added!');
-      }).catch(next);
+    userModel.findOne({username}).then((user) => {
+      const owner = user._id;
+      const expenseData = {...data, owner};
+      expenseModel.create(expenseData)
+        .then((expense) => {
+          userModel.findOneAndUpdate({"_id": owner}, {"$push": {"expenses": expense}})
+            .then(() => {
+              res.send(expense);
+            })
+        });
+    }).catch(next);
+
   },
   update: function (req, res, next) {
     const targetId = req.params.id;
